@@ -1,0 +1,64 @@
+Operator Spread
+	Por exemplo, sendo usado para espalhar um array ou objeto.
+	Ex:		const newArray = [ ...oldArray, 1, 2 ];
+			const newObject = { ...oldObject, newProperty: 5 };
+
+	Outro exemplo:
+	const person = {
+		name: "Everson"
+	}
+
+	const newPerson = {
+		...person,
+		age: 22
+	}
+
+	constole.log(newPerson) // retorna {age: 28, name: "Everson" }
+Operador Rest
+	Aqui, ele está sendo esando para unir uma lista de argumentos de uma função em um array.
+	Ex:   	function sortArgs( ...args ) {
+				return args.sort();
+			}
+  
+	Outro exemplo:
+	const filtro = (...args) => {
+		return args.filter( (item) => item === 1 );
+	}
+
+	console.log(filtro(1, 2, 3)) // retorna [1]
+
+Herança - evitando os problemas de atribuição de uma variável à outra.
+	Ex:   	const person = {
+				name: "Everson"
+			};
+
+			const secondPerson = {
+				...person
+			}
+
+			person.name = "Vinicius";
+
+			console.log(secondPerson) // retorna Vinicius;
+  
+	Essa é uma forma mais eficaz de atribuir o valor de uma variável à outra, garantindo que devido ao sistema de herença, ao editar uma variável, isso não interfica na outra.
+	
+Array
+	find()
+		É um método de array que retorna o valor do primeiro elemento que passa em um teste (uma condição). Esse método executa uma função anônima em cada elemento do array. Esse método retorna "undefined" se nenhum elemento estiver de acordo com a condição. E esse método não executa em elementos vazios e ele não muda o array original.
+		
+		Syntax: 	myArray.find( function( currentItem, index, array ), thisValue )
+		
+			- currentItem: O elemento atual durante o mapeamento do array. (Obrigatório)
+			- index: O indice do elemento atual em relação ao array (óbvio). (Opcional)
+			- array: O array do elemento atual. (Opcional)
+			- thisValue: É um parâmetro opcional, ele é o valor passado para a função como sendo o "this" value.
+			
+	findIndex()
+		Faz a mesma coisa que o find(), só que ao invés de retornar o primeiro valor que é aprovado pela condição, ele retorna o índice desse elemento. Além de tudo, ele retorna "-1" se nenhum elemento do array preencher o requisito. Ele não executa em arrays vazios e ele não muda o array original.
+		
+		Syntax: 	myArray.findIndex( function( currentItem, index, array ) thisValue )
+		
+			- currentItem: O elemento atual durante o mapeamento do array. (Obrigatório)
+			- index: O indice do elemento atual em relação ao array (óbvio). (Opcional)
+			- array: O array do elemento atual. (Opcional)
+			- thisValue: É um parâmetro opcional, ele é o valor passado para a função como sendo o "this" value.
