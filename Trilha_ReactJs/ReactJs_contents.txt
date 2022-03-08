@@ -62,3 +62,7 @@ Array
 			- index: O indice do elemento atual em relação ao array (óbvio). (Opcional)
 			- array: O array do elemento atual. (Opcional)
 			- thisValue: É um parâmetro opcional, ele é o valor passado para a função como sendo o "this" value.
+			
+** Não fique repetindo o mesmo código várias e várias vezes **
+** Nâo atribua muitas tarefas à uma mesma função, distribua as tarefas em outras pequenas funções **
+** Espalhar grandes blocos de códigos em múltiplas funções pequenas **
