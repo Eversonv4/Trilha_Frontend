@@ -66,3 +66,5 @@ Array
 ** Não fique repetindo o mesmo código várias e várias vezes **
 ** Nâo atribua muitas tarefas à uma mesma função, distribua as tarefas em outras pequenas funções **
 ** Espalhar grandes blocos de códigos em múltiplas funções pequenas **
+
+- Lifting the state up
