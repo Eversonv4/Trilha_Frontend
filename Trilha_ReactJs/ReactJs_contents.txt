@@ -68,3 +68,73 @@ Array
 ** Espalhar grandes blocos de códigos em múltiplas funções pequenas **
 
 - Lifting the state up
+
+Hooks
+	useRef( )
+	
+	useEffect( )
+		useEffect( <function>, [ dependencies ] );
+		
+		Ele nos permite executar side effects nos componentes. Alguns exemplos de side effect: fetching data, atualizar diretamente o DOM, e temporizadores. O useEffect recebe dois argumentos, sendo o segundo opcional. Mas tem um detalhe importante, o useEffect será executado sempre que o componente que ele estiver, for renderizado ou sofrer alguma alteração, o que acaba causando outro efeito.
+		
+		Ex: 	import { useState, useEffect } from "react";
+				import ReactDom from "react-dom";
+				
+				function Timer( ) {
+					const [ count, setCount ] = useState(0);
+					
+					useEffect( ( ) => {
+						let timer = setTimeout( ( ) => {
+							setCount( (count) => count + 1);
+						} , 1000);
+						
+					/*
+						Outra forma de parar essa repetição, seria retornar uma função com o método "clearTimeout()", mas precisa estar dentro da função do useEffect( ). Pode ser o retorno da função que é passada dentro desse hook. 
+						
+						OBS: Podemos até usar o setTimeout() sem atribuir à nenhuma variável, mas para poder parar sua ativação, precisamos passar atribuir à uma variável "timer".
+					*/	
+						Ex: 	return ( ) => clearTimeout( timer );
+						
+					} ,  [ ]);
+					
+
+					
+					return <h1>I've rendered { count } times! </h1>;
+				}
+				
+				ReactDOM.render(<Timer />, document.getElementById("root"));
+				
+		Nesse exemplo do da função Timer, o useEffect será acionado sempre que a função "setTimeout()" for executada, porém ela é executada a cada 1000 milisegundos, então o useEffect será ativado nessa mesma frequência.
+		
+		Mas esse comportamento de ficar sem auto invocando o tempo todo não é o ideal, isso pode gerar um loop infinito e consumir toda a memória da aplicação, podendo travar o software. Devemos sempre incluir um segundo parâmetro ao qual recebe um array. Podemos, opcionalmente, passar algumas dependências para o useEffect, colocando dentro do array.
+		
+		Ex: 	useEffect( ( ) => {
+					// Executa apenas na primeira renderização. Isso por conta do array passado em segundo parâmetro.
+				} , [ ])
+				
+		Ex: 	useEffect( ( ) => {
+					// Executa apenas na primeira renderização.
+					// E também será executado se alguma variável ou estado, que for passado por "dependência" for alterado.
+				} , [ prop, state ])
+		
+		Ex: 	import { useState, useEffect } from 'react';
+				import ReactDOM from 'react-dom';
+				
+				function Counter( ) {
+					const [ count, setCount ] = useState(0);
+					const [ calculation, setCalculation ] = useState(0);
+					
+					useEffect( ( ) => {
+						setCalculation( ( ) => count * 2 );
+					} , [ count ]) // adicionou a variável "count" aqui.
+					
+					return  (
+						<>
+							<p>Count: { count }</p>
+							<button onClick={ ( ) => setCount( ( c ) => c + 1 ) }> + </button>
+							<p>Calculation: { calculation } </p>
+						</>
+					);
+				}
+				
+				ReactDom.render(<Counter />, document.getElementById('root'));
