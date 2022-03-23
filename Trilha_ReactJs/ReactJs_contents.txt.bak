@@ -241,10 +241,4 @@ Hooks
 		
 		useMemo(function, [dependencias])
 		
-		Sintaxe bem comum. Ele retorna um valor que salvo em cache. E já que esse valor é salvo em cache, ele não precisa ser recalculado. Ele é executado sempre que uma de suas dependências é alterada. Ele melhora perfomance também. Assim como o useCallback(), ele retorna algo que foi salvo em cache, mas no caso do useMemo() ele retorna apenas um valor.
-		
-		Ele pode ser usado para manter funções muito complexas e que fazem muitas coisas, de ser renderizada várias vezes sem necessidade.
-		
-		Ex: 	const calculation = useMemo(() => {
-					expensiveCalculation(count)
-				}, [])
+		Sintaxe bem comum.
