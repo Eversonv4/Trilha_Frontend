@@ -70,6 +70,8 @@ Array
 - Lifting the state up
 
 Hooks
+	NÃO USAR HOOKS DENTRO DE BLOCOS, tipo "If(){ useHook }", eles precisam estar dentro do nível superior da função. Pode estar dentro ou fora da função principal, mas não dentro de blocos. Se for querer usar um if com useEffect, por exemplo, tem que colocar o "if" dentro do useEffect.
+	
 	useRef( )
 	
 	useEffect( )
